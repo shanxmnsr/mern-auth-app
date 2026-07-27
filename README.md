@@ -105,7 +105,7 @@ MERN-AUTH-APP/
 │       ├── pages/
 │       ├── context/
 │       └── api/
-
+|
 ├── server/
 │   ├── config/
 │   ├── controllers/
