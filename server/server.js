@@ -16,7 +16,7 @@ app.use(
     cors({
        origin: [
             "http://localhost:5173",
-            "https://mern-auth-app-pu25.onrender.com/",
+            "https://mern-auth-app-beta.vercel.app",
         ],
     credentials: true,
     })
