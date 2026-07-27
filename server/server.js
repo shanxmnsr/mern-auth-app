@@ -14,7 +14,10 @@ const app = express();
 
 app.use(
     cors({
-       origin: "http://localhost:5173",
+       origin: [
+            "http://localhost:5173",
+            "https://mern-auth-app-pu25.onrender.com/",
+        ],
     credentials: true,
     })
 );
