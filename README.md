@@ -10,10 +10,10 @@ Users can register, login, access protected routes, refresh expired sessions, an
 ## Live Demo
 
 Frontend:
-[https://mern-auth-app-beta.vercel.app](https://mern-auth-app-pu25.onrender.com)
+https://mern-auth-app-beta.vercel.app/
 
 Backend API:
-[https://mern-auth-app-pu25.onrender.com](https://mern-auth-app-beta.vercel.app/)
+https://mern-auth-app-pu25.onrender.com
 
 ---
 
