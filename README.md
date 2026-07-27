@@ -17,6 +17,13 @@ https://mern-auth-app-pu25.onrender.com
 
 ---
 
+## Repository
+
+GitHub:
+[https://github.com/shanxmnsr/](https://github.com/shanxmnsr/mern-auth-app)
+
+---
+
 ## Features
 
 - User registration
@@ -87,7 +94,7 @@ This application uses a two-token authentication system.
 
 ---
 
-# Project Structure
+## Project Structure
 
 
 client/
@@ -96,6 +103,7 @@ client/
 │ ├── components
 │ ├── context
 │ └── api
+
 server/
 ├── controllers
 ├── models
