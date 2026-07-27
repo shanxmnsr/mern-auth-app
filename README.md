@@ -98,39 +98,22 @@ This application uses a two-token authentication system.
 
 ```text
 MERN-AUTH-APP/
-│
+
 ├── client/
-│   ├── src/
-│   │   ├── api/
-│   │   ├── components/
-│   │   ├── context/
-│   │   ├── pages/
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   │
-│   ├── package.json
-│   └── vite.config.js
-│
+│   └── src/
+│       ├── components/
+│       ├── pages/
+│       ├── context/
+│       └── api/
+
 ├── server/
 │   ├── config/
-│   │   └── db.js
-│   │
 │   ├── controllers/
-│   │   └── authController.js
-│   │
 │   ├── middleware/
-│   │   └── authMiddleware.js
-│   │
 │   ├── models/
-│   │   └── User.js
-│   │
 │   ├── routes/
-│   │   ├── authRoutes.js
-│   │   └── userRoutes.js
-│   │
-│   ├── server.js
-│   └── package.json
-│
+│   └── server.js
+
 └── README.md
 ```
 
