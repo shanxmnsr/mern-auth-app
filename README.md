@@ -96,20 +96,43 @@ This application uses a two-token authentication system.
 
 ## Project Structure
 
-
-client/
-├── src/
-│ ├── pages
-│ ├── components
-│ ├── context
-│ └── api
-
-server/
-├── controllers
-├── models
-├── routes
-├── middleware
-└── server.js
+```text
+MERN-AUTH-APP/
+│
+├── client/
+│   ├── src/
+│   │   ├── api/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── pages/
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   │
+│   ├── package.json
+│   └── vite.config.js
+│
+├── server/
+│   ├── config/
+│   │   └── db.js
+│   │
+│   ├── controllers/
+│   │   └── authController.js
+│   │
+│   ├── middleware/
+│   │   └── authMiddleware.js
+│   │
+│   ├── models/
+│   │   └── User.js
+│   │
+│   ├── routes/
+│   │   ├── authRoutes.js
+│   │   └── userRoutes.js
+│   │
+│   ├── server.js
+│   └── package.json
+│
+└── README.md
+```
 
 ---
 
