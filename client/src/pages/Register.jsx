@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import api from "../api/axios";
 
@@ -9,6 +10,8 @@ import toast from "react-hot-toast";
 
 const Register = () => {
   const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -26,6 +29,8 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (loading) return;
+
     // Client-side validation
     if (!formData.name.trim()) {
       toast.error("Please enter your full name.");
@@ -36,9 +41,10 @@ const Register = () => {
       toast.error("Please enter your email address.");
       return;
     }
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!emailRegex.test(formData.email)) {
+    if (!emailRegex.test(formData.email.trim())) {
       toast.error("Please enter a valid email address.");
       return;
     }
@@ -54,6 +60,8 @@ const Register = () => {
     }
 
     try {
+      setLoading(true);
+
       await api.post("/auth/register", {
         name: formData.name.trim(),
         email: formData.email.trim().toLowerCase(),
@@ -67,6 +75,8 @@ const Register = () => {
       }, 1000);
     } catch (error) {
       toast.error(error.response?.data?.message || "Registration failed.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -112,6 +122,7 @@ const Register = () => {
 
           <button
             type="submit"
+            disabled={loading}
             className="
               w-full
 
@@ -134,11 +145,13 @@ const Register = () => {
               duration-300
 
               hover:bg-[#B87333]
-
               hover:shadow-lg
+
+              disabled:opacity-60
+              disabled:cursor-not-allowed
             "
           >
-            Create Account
+            {loading ? "Creating Account..." : "Create Account"}
           </button>
 
           <div

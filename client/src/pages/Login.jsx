@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../api/axios";
@@ -10,8 +11,9 @@ import toast from "react-hot-toast";
 
 const Login = () => {
   const navigate = useNavigate();
-
   const { setUser } = useAuth();
+
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -28,23 +30,27 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (loading) return;
+
+    if (!formData.email.trim()) {
+      toast.error("Please enter your email address.");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(formData.email.trim())) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+
+    if (!formData.password.trim()) {
+      toast.error("Please enter your password.");
+      return;
+    }
+
     try {
-      if (!formData.email.trim()) {
-        toast.error("Please enter your email address.");
-        return;
-      }
-
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-      if (!emailRegex.test(formData.email.trim())) {
-        toast.error("Please enter a valid email address.");
-        return;
-      }
-
-      if (!formData.password.trim()) {
-        toast.error("Please enter your password.");
-        return;
-      }
+      setLoading(true);
 
       const response = await api.post("/auth/login", {
         email: formData.email.trim().toLowerCase(),
@@ -58,6 +64,8 @@ const Login = () => {
       navigate("/dashboard");
     } catch (error) {
       toast.error(error.response?.data?.message || "Login failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -88,6 +96,7 @@ const Login = () => {
 
           <button
             type="submit"
+            disabled={loading}
             className="
               w-full
 
@@ -113,11 +122,13 @@ const Login = () => {
               duration-300
 
               hover:bg-[#B87333]
-
               hover:shadow-lg
+
+              disabled:opacity-60
+              disabled:cursor-not-allowed
             "
           >
-            Login
+            {loading ? "Signing In..." : "Login"}
           </button>
 
           <div
